@@ -1,0 +1,38 @@
+html, body, #root, .ant-layout {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.ant-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.ant-layout-sider {
+  height: 100vh; /* Full viewport height */
+  overflow: auto;
+}
+
+.ant-layout-header {
+  background-color: #fff;
+  padding: 0 16px;
+}
+
+.ant-layout-content {
+  padding: 24px;
+  margin: 0;
+  min-height: calc(100vh - 64px); /* Adjust content height */
+  overflow: auto;
+}
+
+.ant-avatar {
+  display: block;
+  margin: 16px auto;
+}
+
+@media (max-width: 768px) {
+  .ant-layout-sider-collapsed .ant-avatar {
+    display: none;
+  }
+}

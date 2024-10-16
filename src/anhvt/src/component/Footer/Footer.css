@@ -1,0 +1,78 @@
+/* Footer.css */
+.footer {
+    background-color: #fffafa;
+    font-family: 'Montserrat';
+    border-top: 1px solid #ccc;
+    text-align: center;
+    color: black;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-evenly;
+    /* Căn đều các phần */
+    align-items: flex-start;
+    padding: 0 20px;
+  }
+  
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    flex: 1;
+    /* Mỗi cột sẽ chiếm cùng diện tích */
+    padding: 10px;
+  }
+  
+  .footer-left p {
+  
+    font-size: 17px;
+    margin-right: 20px;
+    
+  }
+  
+  .footer-right p {
+    font-size: 17px;
+    margin-left: 20px;
+    
+  }
+  
+  .footer-left p strong {
+    color: #3D3D74;
+    font-weight: 600;
+  
+    font-family: Georgia;
+    font-variant: small-caps;
+  }
+  
+  
+  .footer-right p strong {
+    color: #3D3D74;
+    font-weight: 600;
+  
+    font-family: Georgia;
+    font-variant: small-caps;
+  }
+  
+  .footer-center {
+    color: #3D3D74;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+    font-family: Georgia;
+  }
+  
+ 
+  /* Thiết kế dành cho màn hình nhỏ */
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      /* Đặt các phần thành cột khi trên màn hình nhỏ */
+      text-align: center;
+    }
+  
+    .footer-left,
+    .footer-center,
+    .footer-right {
+      padding: 20px 0;
+    }
+  }

@@ -1,0 +1,141 @@
+.payment-page-container {
+    display: flex;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .profile-sidebar {
+    width: 200px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+  }
+  
+  .profile-sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  
+  
+  .profile-sidebar li {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .profile-sidebar li.active {
+    font-weight: bold;
+    color: #ff6600;
+  }
+  
+  .payment-section {
+    flex: 1;
+  }
+  
+  .status-tabs {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .status-tabs .tab {
+    padding: 10px 20px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    margin-right: 10px;
+    border-radius: 5px;
+  }
+  
+  .status-tabs .tab.active {
+    background-color: #ff6600;
+    color: white;
+  }
+  
+  .payment-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .payment-item {
+    display: flex;
+    padding: 20px;
+    background-color: #fff5f0;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+  
+  .koi-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 20px;
+  }
+  
+  .payment-details {
+    flex: 1;
+  }
+  
+  .payment-details h3 {
+    margin: 0;
+    color: #333;
+  }
+  
+  .payment-details p {
+    margin: 5px 0;
+  }
+  
+  .status {
+    font-size: 14px;
+    color: #1c1c1c;
+  }
+  
+  .price {
+    color: #ff6600;
+    font-weight: bold;
+  }
+  
+  .details-button {
+    background-color: #ff6600;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  .details-button:hover {
+    background-color: #e65c00;
+  }
+  
+  /* Định dạng cho phần tử li */
+.profile-sidebar li {
+  list-style: none; /* Xóa dấu chấm của danh sách */
+  margin: 10px 0; /* Khoảng cách giữa các mục */
+}
+
+/* Định dạng cho các liên kết (Link) trong sidebar */
+.sidebar-link {
+  display: block; /* Đảm bảo liên kết bao hết toàn bộ vùng của li */
+  padding: 10px 15px; /* Khoảng cách bên trong để tăng kích thước vùng nhấn */
+  text-decoration: none; /* Xóa gạch chân mặc định của link */
+  color: #333; /* Màu chữ mặc định */
+  border-radius: 5px; /* Bo tròn góc */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Thêm hiệu ứng chuyển màu */
+}
+
+/* Định dạng khi di chuột (hover) vào link */
+.sidebar-link:hover {
+  background-color: #ff6600; /* Đổi màu nền khi hover */
+  color: white; /* Màu chữ khi hover */
+}
+
+/* Định dạng cho link đang được active (áp dụng màu nổi bật) */
+.sidebar-link.active {
+  background-color: #ff6600;
+  color: white;
+  font-weight: bold; /* Tăng độ dày của chữ */
+}
