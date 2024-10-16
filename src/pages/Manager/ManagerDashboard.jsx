@@ -30,11 +30,11 @@ import { BookingManagementJsx } from './manage/booking-management'
 import { EnhancedBookingManagementComponent } from './tests/enhanced-booking-management'
 
 import { ConsultingStaffAssignmentViewJsx } from './pages/components-consulting-staff-assignment-view'
-import { DeliveryStaffAssignmentViewJsx } from './pages/components-delivery-staff-assignment-view'
  import { QuoteDetails } from './pages/quote-details'
 import { SalesStaffManagementComponent } from './finals/sales-staff-management'
 import { ConsultingStaffAssignmentComponent } from './finals/consulting-staff-assignment-component'
 import { ExtendedQuoteReviewComponent } from './finals/extended-quote-review'
+import { DeliveryStaffAssignment } from './finals/delivery-staff-assignment'
      
 
 export default function ManagerDashboard() {
@@ -126,7 +126,7 @@ export default function ManagerDashboard() {
                 <Route path='/test3' element={<EnhancedBookingManagementComponent />} />
                 <Route path='/sales-staff-assignment' element={<SalesStaffManagementComponent />} />
                 <Route path='/consulting-staff-assignment' element={<ConsultingStaffAssignmentComponent />} />
-                <Route path='/delivery-staff-assignment' element={<DeliveryStaffAssignmentViewJsx />} />
+                <Route path='/delivery-staff-assignment' element={<DeliveryStaffAssignment />} />
                 {/* ///////////////////// */}
 
                 <Route path="/dashboard" element={<DashboardOverview />} />
