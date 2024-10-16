@@ -79,6 +79,12 @@ export function DeliveryStaffAssignment() {
     try {
       const response = await api.put(`/api/booking/update/${selectedBooking.id}`, {
         ...selectedBooking,
+        trip: selectedBooking.trip,
+        description: selectedBooking.description,
+        createAt: selectedBooking.createAt,
+        tripPayment: selectedBooking.tripPayment,
+        saleStaff: selectedBooking.saleStaff,
+        consultingStaffId: selectedBooking.consultingStaffId,
         deliveryStaffId: selectedStaff,
         status: "Order Prepare"
       })
