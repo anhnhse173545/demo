@@ -18,7 +18,7 @@ const api = axios.create({
   timeout: 5000,
 })
 
-export default function StaffManagerView() {
+export function StaffManagerViewComponent() {
   const [staffList, setStaffList] = useState([])
   const [isAdding, setIsAdding] = useState(false)
   const [editingStaff, setEditingStaff] = useState(null)

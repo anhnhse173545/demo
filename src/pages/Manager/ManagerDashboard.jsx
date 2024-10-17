@@ -37,7 +37,8 @@ import { ExtendedQuoteReviewComponent } from './finals/extended-quote-review'
 import { DeliveryStaffAssignment } from './finals/delivery-staff-assignment'
 import { DeliveryOrderListComponent } from './finals/delivery-order-list'
 import { OrderListComponent } from '@/components/order-list'
-     
+import BookingManagerComponent from './finals/booking-manager'
+       
 
 export default function ManagerDashboard() {
   const [isNavExpanded, setIsNavExpanded] = useState(true)
@@ -55,7 +56,7 @@ export default function ManagerDashboard() {
     ///////////////
     { name: 'Dashboard Overview', icon: <BarChart className="h-5 w-5" />, path: '/dashboard' }, 
     { name: 'Staff Manager', icon: <Users className="h-5 w-5" />, path: '/staff-manager' },
-    { name: 'Tour Manager', icon: <MapPin className="h-5 w-5" />, path: '/tour-manager' },
+    { name: 'Booking Manager', icon: <MapPin className="h-5 w-5" />, path: '/booking-manager' },
     { name: 'Payment Status', icon: <CreditCard className="h-5 w-5" />, path: '/payment-status' },
      { name: 'Test3', icon: <FlaskConical className="h-5 w-5" />, path: '/test3' },
   ]
@@ -133,7 +134,7 @@ export default function ManagerDashboard() {
 
                 <Route path="/dashboard" element={<DashboardOverview />} />
                  <Route path="/staff-manager" element={<StaffManagerView />} />
-                <Route path="/tour-manager" element={<TourManagerView />} />
+                <Route path="/booking-manager" element={<BookingManagerComponent />} />
                 <Route path="/payment-status" element={<PaymentStatusView />} />
                 <Route path="/" element={<Navigate to="/dashboard" replace />} />
               </Routes>
