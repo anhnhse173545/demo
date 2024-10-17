@@ -14,7 +14,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 // Create an Axios instance with default configuration
 const api = axios.create({
-  baseURL: 'http://localhost:8081/api/trip',
+  baseURL: 'http://localhost:8080/api/trip',
   timeout: 5000, // 5 seconds timeout
   headers: {
     'Content-Type': 'application/json',

@@ -35,6 +35,8 @@ import { SalesStaffManagementComponent } from './finals/sales-staff-management'
 import { ConsultingStaffAssignmentComponent } from './finals/consulting-staff-assignment-component'
 import { ExtendedQuoteReviewComponent } from './finals/extended-quote-review'
 import { DeliveryStaffAssignment } from './finals/delivery-staff-assignment'
+import { DeliveryOrderListComponent } from './finals/delivery-order-list'
+import { OrderListComponent } from '@/components/order-list'
      
 
 export default function ManagerDashboard() {
@@ -123,7 +125,7 @@ export default function ManagerDashboard() {
                 {/* /////////////////// */}
                 <Route path='/test1' element={<ExtendedQuoteReviewComponent  />} />
                 <Route path='/test2' element={<QuoteDetails />} />
-                <Route path='/test3' element={<EnhancedBookingManagementComponent />} />
+                <Route path='/test3' element={<DeliveryOrderListComponent />} />
                 <Route path='/sales-staff-assignment' element={<SalesStaffManagementComponent />} />
                 <Route path='/consulting-staff-assignment' element={<ConsultingStaffAssignmentComponent />} />
                 <Route path='/delivery-staff-assignment' element={<DeliveryStaffAssignment />} />

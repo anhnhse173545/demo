@@ -1,5 +1,4 @@
-'use client'
-
+'use client';
 import { useState, useEffect, useCallback } from 'react'
 import axios, { AxiosError } from 'axios'
 import { Button } from "@/components/ui/button"
@@ -27,7 +26,7 @@ export function DeliveryStaffAssignment() {
   const [selectedStaff, setSelectedStaff] = useState("")
   const [searchTerm, setSearchTerm] = useState("")
   const [isLoading, setIsLoading] = useState(true)
-  const [viewMode, setViewMode] = useState('list') // 'list' or 'details'
+  const [viewMode, setViewMode] = useState('list')
 
   const fetchDeliveryStaff = useCallback(async () => {
     try {
@@ -127,13 +126,9 @@ export function DeliveryStaffAssignment() {
   }
 
   const filteredBookings = bookings.filter(booking => 
-    booking.customer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    booking.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    booking.customer?.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    booking.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     (booking.deliveryStaff?.name && booking.deliveryStaff.name.toLowerCase().includes(searchTerm.toLowerCase())))
-
-  if (isLoading) {
-    return <div className="flex justify-center items-center h-screen">Loading...</div>;
-  }
 
   const handleViewDetails = (booking) => {
     setSelectedBooking(booking)
@@ -143,6 +138,10 @@ export function DeliveryStaffAssignment() {
   const handleBackToList = () => {
     setSelectedBooking(null)
     setViewMode('list')
+  }
+
+  if (isLoading) {
+    return <div className="flex justify-center items-center h-screen">Loading...</div>;
   }
 
   return (
@@ -180,17 +179,19 @@ export function DeliveryStaffAssignment() {
                 <TableBody>
                   {filteredBookings.map((booking) => (
                     <TableRow key={booking.id}>
-                      <TableCell className="font-medium">{booking.customer.name}</TableCell>
+                      <TableCell className="font-medium">{booking.customer?.name || 'N/A'}</TableCell>
                       <TableCell>
                         <div className="flex items-center">
                           <Briefcase className="h-4 w-4 mr-1 text-muted-foreground" />
-                          {booking.trip.description}
+                          {booking.trip?.description || 'N/A'}
                         </div>
                       </TableCell>
                       <TableCell>
                         <div className="flex items-center">
                           <Calendar className="h-4 w-4 mr-1 text-muted-foreground" />
-                          {new Date(booking.trip.startDate).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} to {new Date(booking.trip.endDate).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })}
+                          {booking.trip?.startDate && booking.trip?.endDate ? (
+                            `${new Date(booking.trip.startDate).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })} to ${new Date(booking.trip.endDate).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })}`
+                          ) : 'N/A'}
                         </div>
                       </TableCell>
                       <TableCell>
@@ -316,6 +317,7 @@ export function DeliveryStaffAssignment() {
                         className="mt-2">
                         {selectedBooking.status}
                       </Badge>
+                
                     </div>
                   </div>
                   <div className="space-y-4">
@@ -326,13 +328,13 @@ export function DeliveryStaffAssignment() {
                           <MapPin className="h-4 w-4 mr-2 text-muted-foreground" />
                           {selectedBooking.trip?.description || 'N/A'}
                         </p>
-                        <p className="text-sm text-gray-900 dark:text-gray-100 flex  items-center">
+                        <p className="text-sm text-gray-900 dark:text-gray-100 flex items-center">
                           <Calendar className="h-4 w-4 mr-2 text-muted-foreground" />
                           {selectedBooking.trip?.startDate && selectedBooking.trip?.endDate ? (
                             <>
                               {new Date(selectedBooking.trip.startDate).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
                               {' - '}
-                              {new Date(selectedBooking.trip.endDate).toLocaleDateString('en-GB', { year: 'numeric', month:  'long', day: 'numeric' })}
+                              {new Date(selectedBooking.trip.endDate).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
                             </>
                           ) : 'N/A'}
                         </p>
@@ -351,11 +353,14 @@ export function DeliveryStaffAssignment() {
                           <div>
                             <span className="text-sm text-gray-900 dark:text-gray-100">{selectedBooking.deliveryStaff.name}</span>
                             <p className="text-sm text-gray-900 dark:text-gray-100 flex items-center">
-                            <Phone className="h-4 w-4 mr-2 text-muted-foreground" /> {selectedBooking.deliveryStaff.phone || 'No additional info'}</p>
+                              <Phone className="h-4 w-4 mr-2 text-muted-foreground" /> {selectedBooking.deliveryStaff.phone || 'No additional info'}
+                            </p>
                             <p className="text-sm text-gray-900 dark:text-gray-100 flex items-center">
-                            <Mail className="h-4 w-4 mr-2 text-muted-foreground" /> {selectedBooking.deliveryStaff.email || 'No additional info'}</p>
+                              <Mail className="h-4 w-4 mr-2 text-muted-foreground" /> {selectedBooking.deliveryStaff.email || 'No additional info'}
+                            </p>
                             <p className="text-sm text-gray-900 dark:text-gray-100 flex items-center">
-                            <Truck className="h-4 w-4 mr-2 text-muted-foreground" /> {selectedBooking.deliveryStaff.role || 'No additional info'}</p>
+                              <Truck className="h-4 w-4 mr-2 text-muted-foreground" /> {selectedBooking.deliveryStaff.role || 'No additional info'}
+                            </p>
                           </div>
                         </div>
                       ) : (

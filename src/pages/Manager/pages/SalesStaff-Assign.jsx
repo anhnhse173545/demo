@@ -15,7 +15,7 @@ import { Search, UserPlus, Calendar, MapPin } from 'lucide-react'
 import { toast } from "@/components/ui/use-toast"
 
 const api = axios.create({
-  baseURL: 'http://localhost:8081',
+  baseURL: 'http://localhost:8080',
   timeout: 5000,
 })
 

@@ -10,7 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { AlertCircle, CheckCircle, Plane, Calendar, DollarSign, MapPin, Plus, Trash2 } from "lucide-react"
 
-const API_BASE_URL = 'http://localhost:8081/api'
+const API_BASE_URL = 'http://localhost:8080/api'
 
 const colorClasses = {
   primary: "bg-blue-500 hover:bg-blue-600 text-white",

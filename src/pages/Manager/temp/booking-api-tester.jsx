@@ -12,7 +12,7 @@ import { Loader2 } from "lucide-react"
 
 // Create an Axios instance with default configuration
 const api = axios.create({
-  baseURL: 'http://localhost:8081/api/booking',
+  baseURL: 'http://localhost:8080/api/booking',
   timeout: 5000, // 5 seconds timeout
   headers: {
     'Content-Type': 'application/json',
