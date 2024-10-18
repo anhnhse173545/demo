@@ -1,8 +1,19 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles/index.css'
-// import App from './App'
+import './styles/App.css'
 
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+
+ 
+import './index.css'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import { Provider } from 'react-redux'
+import { store } from './redux/store.ts'
+ 
 import ManagerDashboard from './pages/Manager/ManagerDashboard'
 import TripApiTesterComponent from './pages/Manager/tests/trip-api-tester'
 import { HomepageComponent } from './pages/Manager/tests/homepage'

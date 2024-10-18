@@ -2,13 +2,26 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { format, isValid, parseISO } from 'date-fns'
-import { Calendar, Clock, RefreshCw, MapPin, Phone, Mail, Tag, Info } from 'lucide-react';
+import {
+  Calendar,
+  Clock,
+  RefreshCw,
+  MapPin,
+  Phone,
+  Mail,
+  Tag,
+  Info,
+  ChevronDown,
+  ChevronUp,
+  Filter,
+} from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
 import { toast } from "@/components/ui/use-toast"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 const api = axios.create({
   baseURL: 'http://localhost:8080',
@@ -17,12 +30,19 @@ const api = axios.create({
 
 export default function BookingManagerComponent() {
   const [bookings, setBookings] = useState([])
+  const [filteredBookings, setFilteredBookings] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [expandedBooking, setExpandedBooking] = useState(null)
+  const [statusFilter, setStatusFilter] = useState('all')
 
   useEffect(() => {
     fetchBookings()
   }, [])
+
+  useEffect(() => {
+    filterBookings()
+  }, [bookings, statusFilter])
 
   const fetchBookings = async () => {
     setIsLoading(true)
@@ -44,6 +64,14 @@ export default function BookingManagerComponent() {
       })
     } finally {
       setIsLoading(false)
+    }
+  }
+
+  const filterBookings = () => {
+    if (statusFilter === 'all') {
+      setFilteredBookings(bookings)
+    } else {
+      setFilteredBookings(bookings.filter(booking => booking.status === statusFilter))
     }
   }
 
@@ -73,6 +101,10 @@ export default function BookingManagerComponent() {
     return 'Invalid Date'
   }
 
+  const toggleBookingDetails = (bookingId) => {
+    setExpandedBooking(expandedBooking === bookingId ? null : bookingId)
+  }
+
   return (
     (<div className="container mx-auto px-4 py-8">
       <Card className="w-full max-w-4xl mx-auto">
@@ -91,6 +123,23 @@ export default function BookingManagerComponent() {
           </div>
         </CardHeader>
         <CardContent>
+          <div className="mb-6 flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <Filter className="h-5 w-5 text-gray-500" />
+              <span className="text-sm font-medium text-gray-700">Filter by Status:</span>
+            </div>
+            <Select value={statusFilter} onValueChange={setStatusFilter}>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Select status" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Bookings</SelectItem>
+                <SelectItem value="confirmed">Confirmed</SelectItem>
+                <SelectItem value="pending">Pending</SelectItem>
+                <SelectItem value="cancelled">Cancelled</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
           {isLoading ? (
             <div className="space-y-4">
               {[...Array(3)].map((_, index) => (
@@ -99,11 +148,11 @@ export default function BookingManagerComponent() {
             </div>
           ) : error ? (
             <div className="text-center text-red-500 py-8 text-lg">{error}</div>
-          ) : bookings.length === 0 ? (
-            <p className="text-center text-gray-500 py-8 text-lg">No bookings found. New bookings will appear here when customers make reservations.</p>
+          ) : filteredBookings.length === 0 ? (
+            <p className="text-center text-gray-500 py-8 text-lg">No bookings found for the selected status.</p>
           ) : (
             <ul className="space-y-6">
-              {bookings.map((booking) => (
+              {filteredBookings.map((booking) => (
                 <li key={booking.id}>
                   <Card>
                     <CardHeader>
@@ -124,19 +173,11 @@ export default function BookingManagerComponent() {
                           <Clock className="h-5 w-5 text-gray-500" />
                           <span className="text-sm text-gray-600">Time: {booking.time || 'Not specified'}</span>
                         </div>
-                        <div className="flex items-center space-x-2">
-                          <MapPin className="h-5 w-5 text-gray-500" />
-                          <span className="text-sm text-gray-600">Location: {booking.location || 'Not specified'}</span>
-                        </div>
                       </div>
                       <div className="space-y-2">
                         <div className="flex items-center space-x-2">
-                          <Phone className="h-5 w-5 text-gray-500" />
-                          <span className="text-sm text-gray-600">Phone: {booking.phone || 'Not provided'}</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <Mail className="h-5 w-5 text-gray-500" />
-                          <span className="text-sm text-gray-600">Email: {booking.email || 'Not provided'}</span>
+                          <MapPin className="h-5 w-5 text-gray-500" />
+                          <span className="text-sm text-gray-600">Location: {booking.location || 'Not specified'}</span>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Tag className="h-5 w-5 text-gray-500" />
@@ -144,11 +185,42 @@ export default function BookingManagerComponent() {
                         </div>
                       </div>
                     </CardContent>
-                    <CardFooter className="bg-gray-50">
-                      <div className="flex items-center space-x-2 text-sm text-gray-500">
-                        <Info className="h-4 w-4" />
-                        <span>Additional Notes: {booking.notes || 'No additional notes'}</span>
-                      </div>
+                    {expandedBooking === booking.id && (
+                      <CardContent className="border-t pt-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <div className="flex items-center space-x-2">
+                              <Phone className="h-5 w-5 text-gray-500" />
+                              <span className="text-sm text-gray-600">Phone: {booking.phone || 'Not provided'}</span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <Mail className="h-5 w-5 text-gray-500" />
+                              <span className="text-sm text-gray-600">Email: {booking.email || 'Not provided'}</span>
+                            </div>
+                          </div>
+                          <div className="space-y-2">
+                            <div className="flex items-start space-x-2">
+                              <Info className="h-5 w-5 text-gray-500 mt-0.5" />
+                              <span className="text-sm text-gray-600">Additional Notes: {booking.notes || 'No additional notes'}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    )}
+                    <CardFooter className="bg-gray-50 flex justify-end items-center">
+                      <Button variant="outline" onClick={() => toggleBookingDetails(booking.id)}>
+                        {expandedBooking === booking.id ? (
+                          <>
+                            <ChevronUp className="mr-2 h-4 w-4" />
+                            Hide Details
+                          </>
+                        ) : (
+                          <>
+                            <ChevronDown className="mr-2 h-4 w-4" />
+                            View Details
+                          </>
+                        )}
+                      </Button>
                     </CardFooter>
                   </Card>
                 </li>
@@ -157,7 +229,7 @@ export default function BookingManagerComponent() {
           )}
         </CardContent>
         <CardFooter className="flex justify-between items-center bg-gray-100">
-          <p className="text-sm text-gray-600">Total Bookings: {bookings.length}</p>
+          <p className="text-sm text-gray-600">Total Bookings: {filteredBookings.length}</p>
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
