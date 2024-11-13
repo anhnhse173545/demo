@@ -1,0 +1,76 @@
+/* Container */
+.user-detail-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Header */
+.user-detail-container h1 {
+  text-align: center;
+  font-size: 24px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Profile Image */
+.profile-image {
+  display: block;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  border: 2px solid #ddd;
+}
+
+/* User Info */
+.user-info p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.user-info input[type="text"],
+.user-info input[type="email"] {
+  width: calc(100% - 20px);
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+/* Buttons */
+.button, .back-button {
+  display: inline-block;
+  width: 48%;
+  padding: 10px 0;
+  margin: 10px 1%;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button {
+  background-color: #007bff;
+}
+
+.back-button {
+  background-color: #6c757d;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+}

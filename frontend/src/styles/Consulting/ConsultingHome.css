@@ -1,0 +1,17 @@
+.chart-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+  
+  .chart-container {
+    width: 48%; /* Adjust width as needed */
+    max-width: 600px;
+  }
+  
+  .pie-chart-container {
+    width: 40%; /* Smaller width for the pie chart */
+    max-width: 400px; /* Limit the size to 400px */
+  }
+  

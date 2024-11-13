@@ -1,0 +1,87 @@
+.App {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+
+  h1 {
+      color: #333;
+      margin-bottom: 20px;
+      text-align: center;
+  }
+
+  table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+
+      th, td {
+          padding: 12px;
+          text-align: left;
+          border-bottom: 1px solid #ddd;
+      }
+
+      th {
+          background-color: #4CAF50; /* Green header */
+          color: white;
+          font-weight: bold;
+      }
+
+      tr:hover {
+          background-color: #f1f1f1; /* Highlight row on hover */
+      }
+  }
+
+  button {
+      padding: 8px 12px;
+      margin: 5px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+
+      &.edit {
+          background-color: #2196F3; /* Blue for Edit */
+          color: white;
+
+          &:hover {
+              background-color: #1976D2; /* Darker blue on hover */
+          }
+      }
+
+      &.update {
+          background-color: #FF9800; /* Orange for Update */
+          color: white;
+
+          &:hover {
+              background-color: #F57C00; /* Darker orange on hover */
+          }
+      }
+  }
+
+  select {
+      padding: 8px;
+      margin: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+
+      &:focus {
+          border-color: #4CAF50; /* Green border on focus */
+          outline: none;
+      }
+  }
+
+  // Loader styles
+  .loader {
+      text-align: center;
+      font-size: 18px;
+      color: #333;
+  }
+
+  // Error message styles
+  .error {
+      color: red;
+      text-align: center;
+  }
+}

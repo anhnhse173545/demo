@@ -1,0 +1,103 @@
+.add-koi-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f7f9fc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-koi-container h2 {
+    text-align: center;
+    color: #1890ff;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .add-koi-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .ant-space-item {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .add-koi-form .ant-form-item {
+    margin-bottom: 16px;
+  }
+  
+  .ant-form-item-label {
+    font-weight: 500;
+    font-size: 14px;
+  }
+  
+  .ant-input-number,
+  .ant-select-selector,
+  .ant-input {
+    border-radius: 8px;
+  }
+  
+  .add-fish-button {
+    background-color: #1890ff;
+    color: white;
+    border-radius: 8px;
+  }
+  
+  .add-fish-button:hover {
+    background-color: #40a9ff;
+  }
+  
+  .submit-button {
+    width: 100%;
+    height: 40px;
+    background-color: #52c41a;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+  
+  .submit-button:hover {
+    background-color: #73d13d;
+  }
+  
+  .add-fish-pack {
+    margin-top: 30px;
+  }
+  
+  h3 {
+    color: #ff4d4f;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+  
+  .ant-space {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .ant-space-item {
+    margin-bottom: 10px;
+  }
+  
+  .ant-btn {
+    border-radius: 8px;
+  }
+  
+  .ant-form-item-control-input-content {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .anticon-minus-circle {
+    font-size: 20px;
+    color: #ff4d4f;
+  }
+  
+  .anticon-plus {
+    font-size: 20px;
+    color: #1890ff;
+  }
+  

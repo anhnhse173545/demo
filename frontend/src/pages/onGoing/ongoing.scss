@@ -1,0 +1,204 @@
+.complete-trip-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+
+  h2 {
+    font-size: 28px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .section {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+      h3 {
+        font-size: 22px;
+        color: #333;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+      }
+
+      p {
+        margin: 5px 0;
+        line-height: 1.6;
+        color: #555;
+        strong {
+          color: #333;
+        }
+      }
+
+      .itinerary-day {
+        margin-top: 15px;
+
+        h4 {
+          font-size: 18px;
+          color: #555;
+          margin-bottom: 8px;
+        }
+
+        .varieties {
+          margin-top: 10px;
+          p {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .fish-order-section, .fish-pack-order-section {
+      h4 {
+        margin-bottom: 10px;
+        font-size: 18px;
+      }
+
+      .fish-order, .fish-pack-order {
+        margin-bottom: 15px;
+        padding: 15px;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        background-color: #fafafa;
+        
+        p {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+
+  // Phần nút hành động
+  .action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        opacity: 0.9;
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        background-color: #ccc;
+      }
+    }
+
+    // Nút từ chối
+    button:nth-child(1) {
+      background-color: #f44336;
+      color: #fff;
+
+      &:hover {
+        background-color: #e53935;
+      }
+    }
+
+    // Nút thanh toán
+    button:nth-child(2) {
+      background-color: #4caf50;
+      color: #fff;
+
+      &:hover {
+        background-color: #43a047;
+      }
+    }
+  }
+
+  // Hiển thị lỗi
+  .error {
+    color: #f44336;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+
+  .fish-pack-order-section {
+    margin-top: 20px;
+    
+    h3 {
+      font-size: 22px;
+      color: #333;
+      margin-bottom: 20px;
+      text-align: center;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+  
+    .fish-pack-order {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 15px;
+      background-color: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 20px;
+  
+      h4 {
+        font-size: 18px;
+        color: #444;
+        margin-bottom: 10px;
+      }
+  
+      p {
+        margin: 5px 0;
+        line-height: 1.5;
+        color: #666;
+        font-size: 15px;
+        
+        strong {
+          color: #333;
+          font-weight: bold;
+        }
+      }
+  
+      .fish-pack-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        .fish-pack-description {
+          flex: 2;
+          font-size: 16px;
+          color: #555;
+          margin-right: 15px;
+        }
+  
+        .fish-pack-quantity, .fish-pack-price {
+          flex: 1;
+          text-align: right;
+          font-size: 16px;
+          color: #333;
+        }
+      }
+    }
+  }
+  
+}
